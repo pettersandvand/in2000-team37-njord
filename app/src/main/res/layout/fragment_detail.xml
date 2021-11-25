@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!-- Main constrained layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        tools:context=".ui.detail.DetailFragment">
+
+
+        <!-- Visibility group for polygon views -->
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/groupPoly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="scrollPoint,buttonPointList" />
+
+
+        <!-- Visibility group for cone views -->
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/groupCone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="textGeoC,editLatC,editLonC,editRadiusC,editTimeC,textTimeC,editDateC" />
+
+
+        <!-- Text view for description of top simulation object selection -->
+        <TextView
+            android:id="@+id/textObject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/pick_object"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!-- Horizontal scroll view for top object selection  -->
+        <HorizontalScrollView
+            android:id="@+id/scrollTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textObject">
+
+            <!-- Chip group for top object selection  -->
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipsTop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:selectionRequired="true"
+                app:singleLine="true"
+                app:singleSelection="true" />
+        </HorizontalScrollView>
+
+
+        <!-- Text view for description of sub simulation object selection -->
+        <TextView
+            android:id="@+id/textSubObject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/sub_object_description"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollTop" />
+
+
+        <!-- Horizontal scroll view for sub object selection  -->
+        <HorizontalScrollView
+            android:id="@+id/scrollBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textSubObject">
+
+            <!-- Chip group for sub object selection  -->
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipsSub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:selectionRequired="true"
+                app:singleLine="true"
+                app:singleSelection="true" />
+        </HorizontalScrollView>
+
+
+        <!-- Text view for geo type option -->
+        <TextView
+            android:id="@+id/textSimType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/pick_type"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/scrollBottom" />
+
+
+        <!-- Toggle button group for geo type option  -->
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggleGeo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal"
+            app:checkedButton="@+id/buttonPoint"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textSimType"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <Button
+                android:id="@+id/buttonPoint"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tag="@string/tag_point"
+                android:text="@string/point" />
+
+            <Button
+                android:id="@+id/buttonCone"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tag="@string/tag_cone"
+                android:text="@string/cone" />
+
+            <Button
+                android:id="@+id/buttonPolygon"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:tag="@string/tag_polygon"
+                android:text="@string/polygon" />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+
+        <!-- Horizontal scroll view for polygon points  -->
+        <HorizontalScrollView
+            android:id="@+id/scrollPoint"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/editRadius"
+            app:layout_constraintEnd_toEndOf="@id/editRadius"
+            app:layout_constraintStart_toStartOf="@id/editRadius"
+            app:layout_constraintTop_toTopOf="@id/editRadius">
+
+            <!-- Text view to display points - polygon option -->
+            <TextView
+                android:id="@+id/textPointList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:singleLine="true"
+                android:textAppearance="?attr/textAppearanceSubtitle2" />
+        </HorizontalScrollView>
+
+
+        <!-- Button to add points - polygon option -->
+        <Button
+            android:id="@+id/buttonPointList"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_point"
+            app:layout_constraintBottom_toBottomOf="@id/scrollPoint"
+            app:layout_constraintEnd_toEndOf="@id/editLon"
+            app:layout_constraintStart_toStartOf="@id/editLon"
+            app:layout_constraintTop_toTopOf="@id/scrollPoint" />
+
+
+        <!-- Text view for description of geographical data - all options -->
+        <TextView
+            android:id="@+id/textGeo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/geo_data"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            app:layout_constraintStart_toStartOf="@id/editRadius"
+            app:layout_constraintTop_toBottomOf="@id/toggleGeo" />
+
+
+        <!-- Edit text input for latitude - all options -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editLat"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:hint="@string/latitude"
+            android:padding="4dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toStartOf="@+id/editLon"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textGeo"
+            app:startIconDrawable="@drawable/ic_outline_gps_fixed_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberSigned|numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- Edit text input for longitude - all options -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editLon"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:hint="@string/longitude"
+            android:padding="4dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/editLat"
+            app:layout_constraintTop_toBottomOf="@id/textGeo"
+            app:startIconDrawable="@drawable/ic_outline_gps_fixed_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberSigned|numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- Edit text input for radius - all options -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editRadius"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:hint="@string/radius"
+            android:padding="4dp"
+            android:visibility="visible"
+            app:errorEnabled="true"
+            app:helperText="@string/optional"
+            app:layout_constraintEnd_toEndOf="@+id/editLat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editLat"
+            app:suffixText="@string/meter_unit">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- Text view for description of date and time information - all option -->
+        <TextView
+            android:id="@+id/textTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/time_info"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            app:layout_constraintStart_toStartOf="@id/editRadius"
+            app:layout_constraintTop_toBottomOf="@id/editRadius" />
+
+
+        <!-- Edit text input for date - all options -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editDate"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:hint="@string/date"
+            android:padding="4dp"
+            app:errorEnabled="true"
+            app:helperText="@string/date_format"
+            app:layout_constraintEnd_toStartOf="@+id/editTime"
+            app:layout_constraintHorizontal_weight="3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textTime"
+            app:startIconDrawable="@drawable/ic_outline_calendar_today_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- Edit text input for time - all options  -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTime"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:hint="@string/time"
+            android:padding="4dp"
+            app:errorEnabled="true"
+            app:helperText="@string/time_format"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintStart_toEndOf="@id/editDate"
+            app:layout_constraintTop_toBottomOf="@id/textTime"
+            app:startIconDrawable="@drawable/ic_outline_schedule_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="time" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- Text view for description of geographical data - cone option -->
+        <TextView
+            android:id="@+id/textGeoC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/geo_data_to"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            app:layout_constraintStart_toStartOf="@id/editDate"
+            app:layout_constraintTop_toBottomOf="@id/editDate" />
+
+
+        <!-- Edit text input for latitude point 2 - cone options -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editLatC"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:hint="@string/latitude"
+            android:padding="4dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toStartOf="@+id/editLonC"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textGeoC"
+            app:startIconDrawable="@drawable/ic_outline_gps_fixed_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberSigned|numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- Edit text input for longitude point 2 - cone options -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editLonC"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:hint="@string/longitude"
+            android:padding="4dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/editLatC"
+            app:layout_constraintTop_toBottomOf="@id/textGeoC"
+            app:startIconDrawable="@drawable/ic_outline_gps_fixed_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberSigned|numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- Edit text input for radius point 2 - cone options -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editRadiusC"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:hint="@string/radius"
+            android:padding="4dp"
+            app:errorEnabled="true"
+            app:helperText="@string/optional"
+            app:layout_constraintEnd_toEndOf="@+id/editLat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editLatC"
+            app:suffixText="@string/meter_unit">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- Text view for description of date and time information - cone option -->
+        <TextView
+            android:id="@+id/textTimeC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/time_info"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            app:layout_constraintStart_toStartOf="@id/editRadiusC"
+            app:layout_constraintTop_toBottomOf="@id/editRadiusC" />
+
+
+        <!-- Edit text input for date point 2 - cone options -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editDateC"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:hint="@string/date"
+
+            android:padding="4dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toStartOf="@+id/editTimeC"
+            app:layout_constraintHorizontal_weight="3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textTimeC"
+            app:startIconDrawable="@drawable/ic_outline_calendar_today_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- Edit text input for time point 2 - cone options -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editTimeC"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:hint="@string/time"
+            android:padding="4dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintStart_toEndOf="@id/editDateC"
+            app:layout_constraintTop_toBottomOf="@id/textTimeC"
+            app:startIconDrawable="@drawable/ic_outline_schedule_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="time" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- Text view for description simulation duration -->
+        <TextView
+            android:id="@+id/textSimTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/simulation_duration"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            app:layout_constraintStart_toStartOf="@id/editDateC"
+            app:layout_constraintTop_toBottomOf="@id/editDateC" />
+
+
+        <!-- Edit text input for simulation duration -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editSimTime"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:hint="@string/sim_length_hint"
+            android:padding="4dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="@+id/editRadius"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textSimTime">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberSigned|number" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- Text view for description environment variables -->
+        <TextView
+            android:id="@+id/textEnvironment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/environment_variables"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editSimTime" />
+
+
+        <!-- Edit text input for wind speed -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editWindSpeed"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:hint="@string/wind_speed"
+            android:padding="4dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toStartOf="@+id/editWindDir"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textEnvironment"
+            app:suffixText="@string/meter_second_unit">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- Edit text input for wind direction -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editWindDir"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:hint="@string/wind_direction"
+            android:padding="4dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/editWindSpeed"
+            app:layout_constraintTop_toBottomOf="@id/textEnvironment"
+            app:suffixText="@string/degree_unit">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- Edit text input for current speed -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editCurSpeed"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:hint="@string/curent_speed"
+            android:padding="4dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toStartOf="@+id/editCurDir"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editWindSpeed"
+            app:suffixText="@string/meter_second_unit">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- Edit text input for current direction -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editCurDir"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:hint="@string/current_direction"
+            android:padding="4dp"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/editCurSpeed"
+            app:layout_constraintTop_toBottomOf="@id/editWindDir"
+            app:suffixText="@string/degree_unit">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <!-- Button to run simulation -->
+        <Button
+            android:id="@+id/buttonRun"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/run_simulation"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editCurSpeed" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

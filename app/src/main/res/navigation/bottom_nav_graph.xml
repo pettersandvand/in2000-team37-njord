@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav_graph.xml"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.in2000_prosjektoppgave.ui.home.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/mapsSearchFragment"
+        android:name="com.example.in2000_prosjektoppgave.ui.maps.MapSearchFragment"
+        android:label="@string/map"
+        tools:layout="@layout/fragment_map_search" />
+    <fragment
+        android:id="@+id/driftyFragment"
+        android:name="com.example.in2000_prosjektoppgave.ui.drifty.DriftyFragment"
+        android:label="@string/simulation"
+        tools:layout="@layout/fragment_drifty">
+        <action
+            android:id="@+id/action_driftyFragment_to_driftyDetailFragment"
+            app:destination="@id/driftyDetailFragment" />
+        <action
+            android:id="@+id/action_driftyFragment_to_mapViewFragment"
+            app:destination="@id/mapViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="com.example.in2000_prosjektoppgave.ui.weather.WeatherFragment"
+        android:label="@string/weather"
+        tools:layout="@layout/fragment_weather">
+        <action
+            android:id="@+id/action_weatherFragment_to_mapsSearchFragment"
+            app:destination="@id/mapsSearchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/driftyDetailFragment"
+        android:name="com.example.in2000_prosjektoppgave.ui.detail.DetailFragment"
+        android:label="@string/simulation_form"
+        tools:layout="@layout/fragment_detail">
+        <action
+            android:id="@+id/action_driftyDetailFragment_to_mapsSearchFragment"
+            app:destination="@id/mapsSearchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapViewFragment"
+        android:name="com.example.in2000_prosjektoppgave.ui.maps.MapViewFragment"
+        android:label="@string/map"
+        tools:layout="@layout/fragment_map_view" />
+</navigation>

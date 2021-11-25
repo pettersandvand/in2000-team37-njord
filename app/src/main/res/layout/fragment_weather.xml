@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.weather.WeatherFragment">
+
+
+    <!-- Progress bar - for loading -->
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!-- Edit text input for latitude -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/latitudeInput"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:hint="@string/latitude"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toStartOf="@+id/longitudeInput"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconDrawable="@drawable/ic_outline_gps_fixed_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!-- Edit text input for longitude  -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/longitudeInput"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:hint="@string/longitude"
+        app:errorEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@id/latitudeInput"
+        app:layout_constraintTop_toTopOf="parent"
+        app:startIconDrawable="@drawable/ic_outline_gps_fixed_24">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal|numberSigned" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <!-- Card view for weather data -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/weatherCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/latitudeInput">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+
+            <!-- Visibility group for ocean data-->
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/groupExpand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="curSpeedText,curDirectionText,waveDirectionText,waveHeightText" />
+
+
+            <!-- Text view for location / place-->
+            <TextView
+                android:id="@+id/placeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <!-- Text view for date and time-->
+            <TextView
+                android:id="@+id/timeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/placeText" />
+
+
+            <!-- Text view for air temperature -->
+            <TextView
+                android:id="@+id/tempText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:textAppearance="?attr/textAppearanceHeadline2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/timeText" />
+
+
+            <!-- Text view for deg celsius -->
+            <TextView
+                android:id="@+id/tempDeg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/degCelsius"
+                android:textAppearance="?attr/textAppearanceHeadline2"
+                app:layout_constraintStart_toEndOf="@id/tempText"
+                app:layout_constraintTop_toTopOf="@id/tempText" />
+
+
+            <!-- Image view for weather symbol -->
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="78dp"
+                android:layout_height="78dp"
+                android:layout_marginEnd="32dp"
+                android:contentDescription="@string/weather_symbol"
+                android:maxHeight="96dp"
+                app:layout_constraintBottom_toBottomOf="@+id/tempText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tempText"
+                app:layout_constraintVertical_bias="1.0" />
+
+
+            <!-- Text view for wind speed -->
+            <TextView
+                android:id="@+id/windText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintEnd_toStartOf="@id/windDirectionText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tempText" />
+
+
+            <!-- Text view for wind direction -->
+            <TextView
+                android:id="@+id/windDirectionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/windText"
+                app:layout_constraintTop_toTopOf="@id/windText" />
+
+
+            <!-- Slider to control displayed data -->
+            <com.google.android.material.slider.Slider
+                android:id="@+id/slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:stepSize="1.0"
+                android:valueFrom="0.0"
+                android:valueTo="24.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/windText" />
+
+
+            <!-- Divider / horizontal line -->
+            <View
+                android:id="@+id/horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="8dp"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/slider" />
+
+
+            <!-- Button to expand card -->
+            <Button
+                android:id="@+id/buttonExpand"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:text="@string/expand"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/horizontal" />
+
+
+            <!-- Text view for wave height -->
+            <TextView
+                android:id="@+id/waveHeightText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintEnd_toStartOf="@id/waveDirectionText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/buttonExpand" />
+
+
+            <!-- Text view for wave direction -->
+            <TextView
+                android:id="@+id/waveDirectionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/waveHeightText"
+                app:layout_constraintTop_toTopOf="@id/waveHeightText" />
+
+
+            <!-- Text view for current speed -->
+            <TextView
+                android:id="@+id/curSpeedText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintStart_toStartOf="@+id/waveHeightText"
+                app:layout_constraintTop_toBottomOf="@id/waveHeightText" />
+
+
+            <!-- Text view for current direction -->
+            <TextView
+                android:id="@+id/curDirectionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceBody1"
+                app:layout_constraintStart_toStartOf="@+id/waveDirectionText"
+                app:layout_constraintTop_toTopOf="@id/curSpeedText" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <!-- Floating button to fetch data -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/fabCoordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/buttonSend"
+            style="Widget.MaterialComponents.FloatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/new_simulation"
+            app:srcCompat="@drawable/ic_outline_add_24" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    <!-- Generic error text view -->
+    <TextView
+        android:id="@+id/errorText"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:text="@string/generic_error"
+        android:textAppearance="?attr/textAppearanceSubtitle1"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

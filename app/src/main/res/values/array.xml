@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array
+        name="top_display_name">
+        <item>Person</item>
+        <item>Små fartøy</item>
+        <item>Seilbåt</item>
+        <item>Fritidsbåter</item>
+        <item>Livbåt</item>
+    </string-array>
+
+    <array name="sub_groups">
+        <item>@array/sub_group_1</item>
+        <item>@array/sub_group_2</item>
+        <item>@array/sub_group_3</item>
+        <item>@array/sub_group_4</item>
+        <item>@array/sub_group_5</item>
+    </array>
+
+    <string-array
+        name="sub_group_1">
+        <item>Ukjent status</item>
+        <item>Redningsvest type 1 eller 2</item>
+        <item>Redningsvest type 3</item>
+        <item>Overlevelsesdrakt</item>
+        <item>Dykkerdrakt</item>
+        <item>Omkommet</item>
+        <item>Med sjøkajakk</item>
+        <item>Med surfebrett</item>
+    </string-array>
+
+    <string-array
+        name="sub_group_2">
+        <item>Vindsurfer med mast og seil</item>
+        <item>Sunfish seilbåt</item>
+    </string-array>
+
+    <string-array
+        name="sub_group_3">
+        <item>Ukjent status</item>
+        <item>Uten mast</item>
+        <item>Uten seil</item>
+    </string-array>
+
+    <string-array
+        name="sub_group_4">
+        <item>Liten båt (V-skrog)</item>
+        <item>Liten båt kantret</item>
+        <item>Fiskebåt (Generell)</item>
+        <item>Sportsfisker åpen cockpit</item>
+    </string-array>
+
+    <string-array
+        name="sub_group_5">
+        <item>Ukjent status (DB)</item>
+        <item>Liten 4–14 personer (DB)</item>
+        <item>Stor 15–50 personer (DB)</item>
+        <item>Middels uten drivanker (NB)</item>
+        <item>Middels med drivanker (NB)</item>
+    </string-array>
+
+</resources>

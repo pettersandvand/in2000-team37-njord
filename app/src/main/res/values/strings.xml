@@ -1,0 +1,141 @@
+<resources>
+    <string name="app_name">Njord</string>
+    <string name="home">Hjem</string>
+    <string name="map">Kart</string>
+    <string name="simulation">Simulering</string>
+    <string name="simulation_form">Simuleringsskjema</string>
+    <string name="weather">Vær</string>
+    <string name="latitude">Breddegrad</string>
+    <string name="longitude">Lengdegrad</string>
+    <string name="date">Dato</string>
+    <string name="time">Tid</string>
+    <string name="radius">Radius</string>
+    <string name="pick_object">Velg objekt:</string>
+    <string name="geo_data">Geografisk data:</string>
+    <string name="time_info">Tidsinformasjon:</string>
+    <string name="geo_data_from">Geografisk data (Punkt 1): </string>
+    <string name="geo_data_to">Geografisk data (Punkt 2):</string>
+    <string name="pick_type">Velg type simulering:</string>
+    <string name="expand">Utvid</string>
+    <string name="degCelsius">℃</string>
+    <string name="more">mer</string>
+    <string name="content_description_more">mer</string>
+    <string name="empty_database">"Tøm database?"</string>
+    <string name="empty_database_des_weather">Dette vil fjerne all lokalt lagret værdata. Er du sikker?</string>
+    <string name="empty_database_des_simulation">Dette vil fjerne alle lagrede simuleringsfiler. Er du sikker?</string>
+    <string name="no">Nei</string>
+    <string name="yes">Ja</string>
+    <string name="close">Lukk</string>
+    <string name="wind_speed_des">"Vind: %5.1f m/s"</string>
+    <string name="north_east">Koordinater: %.1f N %.1f Ø</string>
+    <string name="north_west">Koordinater: %.1f N %.1f V</string>
+    <string name="south_east">Koordinater: %.1f S %.1f Ø</string>
+    <string name="south_west">Koordinater: %.1f S %.1f V</string>
+    <string name="direction">"Retning: %5.1f°"</string>
+    <string name="wave_height">"Bølgehøyde: %4.1f m"</string>
+    <string name="current_speed">"Strømning: %6.1f m/s"</string>
+    <string name="required">Må oppgis</string>
+    <string name="back">Tilbake</string>
+    <string name="generic_error">Oops… Noe gikk galt!</string>
+    <string name="new_simulation">Ny simulering</string>
+    <string name="weather_symbol">Vær symbol</string>
+    <string name="generic_title">Tittel</string>
+    <string name="generic_text">Noe tekst</string>
+    <string name="open">Åpne</string>
+    <string name="location_error">Posisjonstilgang er ikke gitt!</string>
+    <string name="simulation_date">Simuleringsdato: %s"</string>
+    <string name="simulation_description">Koordinater: %.2f %.2f. Status: %s</string>
+    <string name="error_interval">Intervall: (%.0f , %.0f)</string>
+    <string name="pick_time">Velg tidspunkt:</string>
+    <string name="pick_date">Velg dato:</string>
+    <string name="generic_24_hour">%02d:%02d</string>
+    <string name="optional">Valgfritt</string>
+    <string name="point_display"> (%.2f , %.2f)</string>
+    <string name="add_point">Legg til punkt</string>
+    <string name="sub_object_description">Tilleggsinformasjon:</string>
+    <string name="point">Punkt</string>
+    <string name="cone">Kjegle</string>
+    <string name="polygon">Polygon</string>
+    <string name="simulation_duration">Simuleringslengde:</string>
+    <string name="environment_variables">Miljøvariabler (valgfritt):</string>
+    <string name="wind_direction">Vindretning</string>
+    <string name="wind_speed">Vindstyrke</string>
+    <string name="curent_speed">Havstrøm styrke</string>
+    <string name="current_direction">Havstrøm retning</string>
+    <string name="run_simulation">Simuler</string>
+    <string name="tag_point">Punkt</string>
+    <string name="tag_cone">Kjegle</string>
+    <string name="tag_polygon">Polygon</string>
+    <string name="simulation_marker_title">Simulering: %d. Tidspunkt: %s</string>
+    <string name="simulation_marker_lat">Breddegrad: %f</string>
+    <string name="simulation_marker_lon">Lengdegrad: %f</string>
+    <string name="simulation_marker_stranded">Strandet: %s</string>
+    <string name="options">Valg</string>
+    <string name="format_error">Feil format</string>
+    <string name="in_progress">Pågår</string>
+    <string name="failed">Mislyktes</string>
+    <string name="success">Ferdig</string>
+    <string name="welcome">Velkommen!</string>
+    <string name="position">Posisjon:</string>
+    <string name="show_coordinates">%s %s</string>
+    <string name="date_format">Format dd.mm.åååå</string>
+    <string name="time_format">Format TT:MM</string>
+    <string name="time_hours_max">Timer maks 23</string>
+    <string name="time_minutes_max">Minutter maks 59</string>
+    <string name="use_format_date">Bruk formatet dd.mm.åååå</string>
+    <string name="date_not_approved">Dato er ikke gyldig</string>
+    <string name="days_max">Ugyldig dag</string>
+    <string name="month_max">Ugyldig måned</string>
+    <string name="month_max_variant_one">Måned har bare 30 dager</string>
+    <string name="month_max_variant_two">Måned har bare 29 dager</string>
+    <string name="meter_unit">m</string>
+    <string name="meter_second_unit">m/s</string>
+    <string name="degree_unit">°</string>
+    <string name="sim_length_hint">Antall timer</string>
+    <string name="empty_simulation">Ingen simuleringer</string>
+    <string name="no_simulations">Du har ingen lagrede simuleringer…</string>
+
+    <!-- Home Text -->
+    <string name="home_text">Njord er appen for å simulere hvordan havets krefter virker på ulike objekter.
+        Inspirert av guden Njord fra norrøn mytologi gir denne appen deg drivbanesimuleringer.
+        \n\nNjord er en prosjektoppgave i faget IN2000
+        ved Universitetet i Oslo, som er utviklet av team 37 i samarbeid med Redningsselskapet.
+        \n\nFormålet er å tilby brukeren tilgang til drivbanesimuleringer for objekter som har havnet
+        i sjøen, og kan dermed være et ekstra hjelpemiddel ved søk til havs. \n\nApplikasjonen benytter
+        seg av nettjenesten Drifty fra Meteorologisk Institutt til å kjøre drivbanesimuleringer
+        gjennom OpenDrift. Dette er en programvare for statistisk modellering av drivbanen
+        til objekter som flyter i havet.</string>
+
+    <!-- Change date picker to norwegian -->
+    <string name="mtrl_picker_invalid_format" description="Indicates that the user entered date cannot be parsed because its format is wrong. [CHAR_LIMIT=36]">Feil format</string>
+    <string name="mtrl_picker_date_header_unselected" description="Placeholder for a single date [CHAR_LIMIT=60]">Valgt dato</string>
+    <string name="mtrl_picker_save" description="Confirms the selection [CHAR_LIMIT=12]">Lagre</string>
+    <string name="mtrl_picker_confirm" description="Button text to indicate that the widget will save the user's selection [CHAR_LIMIT=16]">OK</string>
+    <string name="mtrl_picker_cancel" description="Button text to indicate that the widget will ignore the user's selection [CHAR_LIMIT=16]" translatable="false">Avbryt</string>
+    <string name="mtrl_picker_text_input_date_hint" description="Label for a single date selected by the user [CHAR_LIMIT=60]">Dato</string>
+    <string name="mtrl_picker_text_input_year_abbr" description="A 1 character abbreviation for year. It will be part of a string such as dd/mm/yyyy or mm/dd/yyyy or y.mm.dd. [CHAR_LIMIT=1]">å</string>
+    <string name="mtrl_picker_text_input_month_abbr" description="A 1 character abbreviation for month. It will be part of a string such as dd/mm/yyyy or mm/dd/yyyy or y.mm.dd. [CHAR_LIMIT=1]">m</string>
+    <string name="mtrl_picker_text_input_day_abbr" description="A 1 character abbreviation for day. It will be part of a string such as dd/mm/yyyy or mm/dd/yyyy or y.mm.dd. [CHAR_LIMIT=1]">d</string>
+    <string name="mtrl_picker_invalid_format_use" description="Tells a user what format is expected for their date entry. [CHAR_LIMIT=18]">Bruk: dd.mm.åååå</string>
+    <string name="mtrl_picker_invalid_format_example" description="Tells a user what an example valid entry looks like. [CHAR_LIMIT=18]">Eksempel: %1$s</string>
+    <string name="mtrl_picker_toggle_to_calendar_input_mode" description="a11y string to indicate this button changes the input mode to a calendar [CHAR_LIMIT=NONE]">Bytt til kalender valg</string>
+    <string name="mtrl_picker_toggle_to_text_input_mode" description="a11y string to indicate this button changes the input mode to a text field [CHAR_LIMIT=NONE]">Bytt til tekst valg</string>
+    <string name="mtrl_picker_a11y_prev_month" description="a11y string to indicate this button moves the calendar to the previous month [CHAR_LIMIT=NONE]">Bytt til forrige måned</string>
+    <string name="mtrl_picker_a11y_next_month" description="a11y string to indicate this button moves the calendar to the next month [CHAR_LIMIT=NONE]">Bytt til neste måned </string>
+    <string name="mtrl_picker_toggle_to_year_selection" description="a11y string to indicate this button switches the user to choosing a year [CHAR_LIMIT=NONE]">Tap for valg av år</string>
+    <string name="mtrl_picker_toggle_to_day_selection" description="a11y string to indicate this button switches the user to choosing a day [CHAR_LIMIT=NONE]">Tap for valg av dag</string>
+    <string name="mtrl_picker_day_of_week_column_header" description="a11y string to indicate this is a header for a column of days for one day of the week (e.g., Monday) [CHAR_LIMIT=NONE]">Kolonne av dager: %1$s</string>
+    <string name="mtrl_picker_announce_current_selection" description="a11y string read on selection change to indicate the new selection [CHAR_LIMIT=NONE]">Gjeldende valg: %1$s</string>
+    <string name="mtrl_picker_navigate_to_year_description" description="a11y string that informs the user that tapping this button will switch the year [CHAR_LIMIT=NONE]"> Naviger til år %1$s</string>
+    <string name="mtrl_picker_invalid_range">Ugyldig input. </string>
+    <string name="mtrl_picker_out_of_range">Ugyldig interval: %1$s</string>
+    <!-- Time picker to norwegian -->
+    <string name="material_timepicker_select_time" description="Title for the dialog with a time picker. [CHAR_LIMIT=32]">Valgt tid</string>
+    <string name="material_timepicker_minute" description="The label for a text field to select the minute on the hour [CHAR_LIMIT=24]">Minutter</string>
+    <string name="material_timepicker_hour" description="The label for a text field to select the hour on the time [CHAR_LIMIT=24]">Timer</string>
+    <string name="material_hour_selection" description="Description for button to switch to select the hour [CHAR_LIMIT=NONE]">Velg time</string>
+    <string name="material_minute_selection" description="Description for button to switch to select the minute [CHAR_LIMIT=NONE]">Velg minutter</string>
+    <string name="material_clock_toggle_content_description" description="Description for the toggle to choose between AM and PM [CHAR_LIMIT=NONE] ">Velg AM eller PM</string>
+    <string name="material_timepicker_text_input_mode_description">Bytt til tekst input.</string>
+    <string name="material_timepicker_clock_mode_description">Bytt til klokke.</string>
+</resources>
