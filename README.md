@@ -5,6 +5,14 @@ Copy of private enterprise repo of project made by team 37 in course in2000 spri
 
 The goal of the app is to make it easy for the crew on boats to make leeway simulations, to make search and rescue more efficient. With just 3 clicks you can add a new simulation, and it is easy to see the results as well.
 
+## Team Members
+- Iman Ghayoornia
+- Knut Mehl
+- Magnus Smeby
+- Morten Mehle Abelvik
+- Simen Lande 
+- Petter Johan Sandvand
+
 ## Running the app
 
 To compile and run this app, you need two things.
